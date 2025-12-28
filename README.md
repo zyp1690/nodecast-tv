@@ -105,6 +105,21 @@ This means codec support depends entirely on what your browser can decode native
 - Try a different browser (Safari for HEVC/Dolby, Chrome/Edge for VP9/AV1)
 - Check if your IPTV provider offers alternative stream formats
 
+## Supported Stream Types
+
+NodeCast TV is optimized for **HLS (HTTP Live Streaming)**.
+
+-   **✅ HLS (`.m3u8`)**: Fully supported and recommended. Best for adaptive bitrate and network resilience.
+-   **✅ MPEG-TS (`.ts`)**: Supported via the backend proxy. Works well for standard IPTV providers (Xtream Codes).
+-   **⚠️ High Latency/P2P**: For sources like Acestream, prefer HLS output (`.m3u8`) over raw TS streams to avoid timeouts during buffering.
+-   **❌ RTMP/RTSP**: Not supported natively by browsers.
+
+### Acestream / P2P Streaming
+If you are using `acestream-docker-home` or similar tools, you **MUST** use the HLS output format.
+
+-   **Don't use**: `http://proxy:6878/ace/getstream?id=...` (This is a raw MPEG-TS stream)
+-   **Do use**: `http://proxy:6878/ace/manifest.m3u8?id=...` (This wraps the stream in a browser-friendly HLS playlist)
+
 ## Technology Stack
 
 - **Backend**: Node.js, Express
