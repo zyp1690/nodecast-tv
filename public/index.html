@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
@@ -8,21 +8,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="mobile-web-app-capable" content="yes">
-  <title>NodeCast TV | IPTV Player</title>
-  <meta name="description" content="Stream live TV, movies, and series with EPG support">
+  <title>NodeCast TV | IPTV 播放器</title>
+  <meta name="description" content="支持电子节目指南（EPG）的直播电视、电影和剧集流媒体播放">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@800&display=swap"
     rel="stylesheet">
-  <!-- HLS.js for video playback -->
+  <!-- HLS.js 视频播放库 -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
 </head>
 
 <body>
   <div id="app">
-    <!-- Navigation -->
+    <!-- 导航栏 -->
     <nav class="navbar">
       <div class="navbar-brand">
         <span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 187.63 210.6" fill="#6366f1"
@@ -32,7 +32,7 @@
           </svg></span>
         <span class="brand-text">nodecast-tv</span>
       </div>
-      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="切换菜单">
         <span></span>
         <span></span>
         <span></span>
@@ -44,14 +44,14 @@
               <path
                 d="M21 6h-7.59l3.29-3.29L16 2l-4 4-4-4-.71.71L10.59 6H3a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8a2 2 0 0 0-2-2zm0 14H3V8h18v12zM9 10v8l7-4z" />
             </svg></span>
-          <span>Live TV</span>
+          <span>直播电视</span>
         </a>
         <a href="#" class="nav-link" data-page="guide">
           <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
               class="icon">
               <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
             </svg></span>
-          <span>TV Guide</span>
+          <span>电视指南</span>
         </a>
         <a href="#" class="nav-link" data-page="movies">
           <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -59,7 +59,7 @@
               <path
                 d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V4h-4z" />
             </svg></span>
-          <span>Movies</span>
+          <span>电影</span>
         </a>
         <a href="#" class="nav-link" data-page="series">
           <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -67,7 +67,7 @@
               <path
                 d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z" />
             </svg></span>
-          <span>Series</span>
+          <span>剧集</span>
         </a>
         <a href="#" class="nav-link" data-page="settings">
           <span class="nav-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -75,39 +75,39 @@
               <path
                 d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L3.16 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.04.64.09.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.58 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
             </svg></span>
-          <span>Settings</span>
+          <span>设置</span>
         </a>
       </div>
     </nav>
 
-    <!-- Main Content Area -->
+    <!-- 主内容区域 -->
     <main class="main-content">
-      <!-- Home Page -->
+      <!-- 首页 -->
       <div id="page-home" class="page active">
         <div class="home-layout">
-          <!-- Channel Toggle Button (Mobile) -->
+          <!-- 频道切换按钮（移动端） -->
           <button class="channel-toggle-btn" id="channel-toggle-btn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
               <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
             </svg>
-            <span>Channels</span>
+            <span>频道</span>
           </button>
 
-          <!-- Overlay for drawer -->
+          <!-- 侧边栏遮罩层 -->
           <div class="channel-sidebar-overlay" id="channel-sidebar-overlay"></div>
 
-          <!-- Channel Sidebar -->
+          <!-- 频道侧边栏 -->
           <aside class="channel-sidebar" id="channel-sidebar">
             <div class="sidebar-header">
               <div class="search-wrapper">
-                <input type="text" id="channel-search" placeholder="Search channels..." class="search-input">
-                <button type="button" class="search-clear" title="Clear search">&times;</button>
+                <input type="text" id="channel-search" placeholder="搜索频道..." class="search-input">
+                <button type="button" class="search-clear" title="清空搜索">&times;</button>
               </div>
               <div class="sidebar-controls">
                 <select id="source-select" class="source-select">
-                  <option value="">All Sources</option>
+                  <option value="">全部来源</option>
                 </select>
-                <button id="toggle-groups" class="btn btn-sm btn-ghost" title="Expand/Collapse All">
+                <button id="toggle-groups" class="btn btn-sm btn-ghost" title="展开/折叠全部">
                   <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                       <path
                         d="M12 5.83L15.17 9l1.41-1.41L12 3 7.41 7.59 8.83 9 12 5.83zm0 12.34L8.83 15l-1.41 1.41L12 21l4.59-4.59L15.17 15 12 18.17z" />
@@ -118,35 +118,33 @@
             </div>
             <div id="channel-list" class="channel-list">
               <div class="empty-state">
-                <p>No channels loaded</p>
-                <p class="hint">Add a source in Settings to get started</p>
+                <p>未加载频道</p>
+                <p class="hint">前往设置添加来源开始使用</p>
               </div>
             </div>
           </aside>
 
-          <!-- Video Player Area -->
+          <!-- 视频播放区域 -->
           <section class="player-section">
             <div class="video-container" id="video-container">
               <video id="video-player" playsinline></video>
 
-              <!-- Custom Controls Overlay -->
+              <!-- 自定义控制层 -->
               <div class="watch-overlay hidden" id="player-controls-overlay">
-                <!-- Top Bar -->
+                <!-- 顶部栏 -->
                 <div class="watch-top-bar">
                   <h2 class="watch-title-overlay" id="player-channel-name"></h2>
                 </div>
 
-
-
-                <!-- Loading Spinner -->
+                <!-- 加载动画 -->
                 <div class="watch-loading" id="player-loading">
                   <div class="loading-spinner"></div>
                 </div>
 
-                <!-- Bottom Bar: Controls -->
+                <!-- 底部栏：控制按钮 -->
                 <div class="watch-bottom-bar">
                   <div class="watch-controls">
-                    <button class="watch-btn watch-btn-lg" id="btn-play" title="Play/Pause">
+                    <button class="watch-btn watch-btn-lg" id="btn-play" title="播放/暂停">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="icon icon-play">
                         <path d="M8 5v14l11-7z" />
@@ -159,7 +157,7 @@
 
                     <div class="watch-spacer"></div>
 
-                    <button class="watch-btn" id="btn-mute" title="Mute">
+                    <button class="watch-btn" id="btn-mute" title="静音">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                         class="icon icon-vol">
                         <path
@@ -173,29 +171,29 @@
                     </button>
                     <input type="range" class="watch-volume" id="player-volume" min="0" max="100" value="80">
 
-                    <!-- Captions Button -->
+                    <!-- 字幕按钮 -->
                     <div class="watch-captions-wrapper">
-                      <button class="watch-btn" id="player-captions-btn" title="Captions">
+                      <button class="watch-btn" id="player-captions-btn" title="字幕">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                           <path
                             d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z" />
                         </svg>
                       </button>
                       <div class="watch-captions-menu hidden" id="player-captions-menu">
-                        <div class="captions-menu-title">Subtitles</div>
+                        <div class="captions-menu-title">字幕</div>
                         <div class="captions-menu-list" id="player-captions-list">
-                          <button class="captions-option active" data-index="-1">Off</button>
+                          <button class="captions-option active" data-index="-1">关闭</button>
                         </div>
                       </div>
                     </div>
 
-                    <button class="watch-btn" id="btn-pip" title="Picture-in-Picture">
+                    <button class="watch-btn" id="btn-pip" title="画中画">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                         <path
                           d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z" />
                       </svg>
                     </button>
-                    <button class="watch-btn" id="btn-fullscreen" title="Fullscreen">
+                    <button class="watch-btn" id="btn-fullscreen" title="全屏">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                         <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
                       </svg>
@@ -206,18 +204,18 @@
 
               <div class="player-overlay" id="player-overlay">
                 <div class="overlay-content">
-                  <p>Select a channel to start watching</p>
+                  <p>选择一个频道开始观看</p>
                 </div>
               </div>
-              <!-- Now Playing Overlay -->
+              <!-- 正在播放浮层 -->
               <div class="now-playing-overlay hidden" id="now-playing">
                 <div class="now-playing-info">
-                  <h3 class="channel-name">No channel selected</h3>
+                  <h3 class="channel-name">未选择频道</h3>
                   <p class="program-title"></p>
                   <p class="program-time"></p>
                 </div>
                 <div class="up-next">
-                  <h4>Up Next</h4>
+                  <h4>下一个节目</h4>
                   <ul id="up-next-list"></ul>
                 </div>
               </div>
@@ -226,93 +224,93 @@
         </div>
       </div>
 
-      <!-- Guide Page -->
+      <!-- 电视指南页面 -->
       <div id="page-guide" class="page">
         <div class="guide-header">
-          <h2>TV Guide</h2>
+          <h2>电视指南</h2>
           <div class="guide-controls">
             <select id="epg-group-select" class="source-select">
-              <option value="">All Groups</option>
+              <option value="">全部分组</option>
             </select>
             <div class="search-wrapper">
-              <input type="text" id="epg-search" placeholder="Search channels..." class="search-input">
-              <button type="button" class="search-clear" title="Clear search">&times;</button>
+              <input type="text" id="epg-search" placeholder="搜索频道..." class="search-input">
+              <button type="button" class="search-clear" title="清空搜索">&times;</button>
             </div>
-            <button id="guide-prev" class="btn btn-ghost">&larr; Earlier</button>
-            <span id="guide-date" class="guide-date">Today</span>
-            <button id="guide-next" class="btn btn-ghost">Later &rarr;</button>
+            <button id="guide-prev" class="btn btn-ghost">&larr; 更早</button>
+            <span id="guide-date" class="guide-date">今日</span>
+            <button id="guide-next" class="btn btn-ghost">更晚 &rarr;</button>
           </div>
         </div>
         <div id="epg-grid" class="epg-grid">
           <div class="empty-state">
-            <p>No EPG data available</p>
-            <p class="hint">Add an EPG source in Settings</p>
+            <p>暂无EPG数据</p>
+            <p class="hint">前往设置添加EPG来源</p>
           </div>
         </div>
       </div>
 
-      <!-- Movies Page -->
+      <!-- 电影页面 -->
       <div id="page-movies" class="page">
         <div class="movies-header">
-          <h2>Movies</h2>
+          <h2>电影</h2>
           <div class="movies-controls">
             <select id="movies-source-select" class="source-select">
-              <option value="">All Sources</option>
+              <option value="">全部来源</option>
             </select>
             <select id="movies-category-select" class="source-select">
-              <option value="">All Categories</option>
+              <option value="">全部分类</option>
             </select>
             <div class="search-wrapper">
-              <input type="text" id="movies-search" placeholder="Search movies..." class="search-input">
-              <button type="button" class="search-clear" title="Clear search">&times;</button>
+              <input type="text" id="movies-search" placeholder="搜索电影..." class="search-input">
+              <button type="button" class="search-clear" title="清空搜索">&times;</button>
             </div>
-            <button id="movies-favorites-btn" class="btn btn-icon btn-ghost" title="Show Favorites Only">
+            <button id="movies-favorites-btn" class="btn btn-icon btn-ghost" title="仅显示收藏">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                 <path
                   d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg> Favorites
+              </svg> 收藏
             </button>
           </div>
         </div>
         <div id="movies-grid" class="movies-grid">
           <div class="empty-state">
-            <p>Loading movies...</p>
+            <p>加载电影中...</p>
           </div>
         </div>
       </div>
 
-      <!-- Series Page -->
+      <!-- 剧集页面 -->
       <div id="page-series" class="page">
         <div class="series-header">
-          <h2>Series</h2>
+          <h2>剧集</h2>
           <div class="series-controls">
             <select id="series-source-select" class="source-select">
-              <option value="">All Sources</option>
+              <option value="">全部来源</option>
             </select>
             <select id="series-category-select" class="source-select">
-              <option value="">All Categories</option>
+              <option value="">全部分类</option>
             </select>
             <div class="search-wrapper">
-              <input type="text" id="series-search" placeholder="Search series..." class="search-input">
-              <button type="button" class="search-clear" title="Clear search">&times;</button>
+              <input type="text" id="series-search" placeholder="搜索剧集..." class="search-input">
+              <button type="button" class="search-clear" title="清空搜索">&times;</button>
             </div>
-            <button id="series-favorites-btn" class="btn btn-icon btn-ghost" title="Show Favorites Only">
+            <button id="series-favorites-btn" class="btn btn-icon btn-ghost" title="仅显示收藏">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                 <path
                   d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg> Favorites
+              </svg> 收藏
             </button>
           </div>
         </div>
         <div class="series-content">
           <div id="series-grid" class="series-grid">
             <div class="empty-state">
-              <p>Loading series...</p>
+              <p>加载剧集中...</p>
             </div>
           </div>
-          <!-- Series details panel (seasons/episodes) -->
+          <!-- 剧集详情面板（季/集） -->
           <div id="series-details" class="series-details hidden">
-            <button class="series-back-btn">← Back to Series</button>
+            <button class="series-back-btn">← 返回剧集列表</button>
             <div class="series-details-header">
               <img id="series-poster" src="" alt="" class="series-poster">
               <div class="series-info">
@@ -325,99 +323,99 @@
         </div>
       </div>
 
-      <!-- Settings Page -->
+      <!-- 设置页面 -->
       <div id="page-settings" class="page">
         <div class="settings-container">
-          <h2>Settings</h2>
+          <h2>设置</h2>
 
-          <!-- Tabs -->
+          <!-- 标签页 -->
           <div class="tabs">
-            <button class="tab active" data-tab="sources">Sources</button>
-            <button class="tab" data-tab="player">Player</button>
-            <button class="tab" data-tab="content">Manage Content</button>
-            <button class="tab" data-tab="users" id="users-tab" style="display:none;">Users</button>
+            <button class="tab active" data-tab="sources">来源</button>
+            <button class="tab" data-tab="player">播放器</button>
+            <button class="tab" data-tab="content">内容管理</button>
+            <button class="tab" data-tab="users" id="users-tab" style="display:none;">用户</button>
           </div>
 
-          <!-- Sources Tab -->
+          <!-- 来源标签页 -->
           <div id="tab-sources" class="tab-content active">
             <div class="source-section">
               <div class="section-header">
-                <h3>Xtream Connections</h3>
-                <button class="btn btn-primary" id="add-xtream">+ Add Xtream</button>
+                <h3>Xtream 连接</h3>
+                <button class="btn btn-primary" id="add-xtream">+ 添加 Xtream</button>
               </div>
               <div id="xtream-list" class="source-list"></div>
             </div>
 
             <div class="source-section">
               <div class="section-header">
-                <h3>M3U Playlists</h3>
-                <button class="btn btn-primary" id="add-m3u">+ Add M3U</button>
+                <h3>M3U 播放列表</h3>
+                <button class="btn btn-primary" id="add-m3u">+ 添加 M3U</button>
               </div>
               <div id="m3u-list" class="source-list"></div>
             </div>
 
             <div class="source-section">
               <div class="section-header">
-                <h3>EPG Sources</h3>
-                <button class="btn btn-primary" id="add-epg">+ Add EPG</button>
+                <h3>EPG 来源</h3>
+                <button class="btn btn-primary" id="add-epg">+ 添加 EPG</button>
               </div>
               <div id="epg-list" class="source-list"></div>
             </div>
 
             <div class="source-section">
-              <h3>EPG Data Settings</h3>
+              <h3>EPG 数据设置</h3>
               <div class="setting-item">
-                <label for="epg-refresh-interval">Auto-refresh EPG data every:</label>
+                <label for="epg-refresh-interval">EPG数据自动刷新周期：</label>
                 <select id="epg-refresh-interval" class="form-input">
-                  <option value="1">1 hour</option>
-                  <option value="2">2 hours</option>
-                  <option value="4">4 hours</option>
-                  <option value="12">12 hours</option>
-                  <option value="24" selected>24 hours</option>
-                  <option value="0">Manual only</option>
+                  <option value="1">1小时</option>
+                  <option value="2">2小时</option>
+                  <option value="4">4小时</option>
+                  <option value="12">12小时</option>
+                  <option value="24" selected>24小时</option>
+                  <option value="0">仅手动刷新</option>
                 </select>
               </div>
               <div class="setting-item">
-                <span class="setting-label">Last Refreshed:</span>
-                <span id="epg-last-refreshed" class="hint">Never</span>
+                <span class="setting-label">上次刷新时间：</span>
+                <span id="epg-last-refreshed" class="hint">从未</span>
               </div>
-              <p class="hint">Use the <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              <p class="hint">点击EPG来源旁的 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                   class="icon" style="width: 1em; height: 1em; vertical-align: middle;">
                   <path
                     d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-                </svg> button next to EPG sources for manual refresh</p>
+                </svg> 按钮可手动刷新</p>
             </div>
           </div>
 
-          <!-- Player Tab -->
+          <!-- 播放器标签页 -->
           <div id="tab-player" class="tab-content">
             <div class="settings-section">
-              <h3>Keyboard Controls</h3>
+              <h3>键盘控制</h3>
               <div class="setting-item">
                 <label class="setting-toggle">
                   <input type="checkbox" id="setting-arrow-keys" checked>
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Arrow keys change channels</span>
-                  <span class="setting-hint">When enabled, ↑/↓ change channels and ←/→ adjust volume</span>
+                  <span class="setting-label">方向键切换频道</span>
+                  <span class="setting-hint">启用后，↑/↓ 切换频道，←/→ 调节音量</span>
                 </div>
               </div>
             </div>
 
             <div class="settings-section">
-              <h3>Now Playing Overlay</h3>
+              <h3>正在播放浮层</h3>
               <div class="setting-item">
-                <label for="setting-overlay-duration">Display Duration (seconds)</label>
+                <label for="setting-overlay-duration">显示时长（秒）</label>
                 <input type="number" id="setting-overlay-duration" class="form-input setting-number" min="1" max="30"
                   value="5">
               </div>
             </div>
 
             <div class="settings-section">
-              <h3>Volume Settings</h3>
+              <h3>音量设置</h3>
               <div class="setting-item">
-                <label for="setting-default-volume">Default Volume</label>
+                <label for="setting-default-volume">默认音量</label>
                 <div class="volume-slider-container">
                   <input type="range" id="setting-default-volume" class="volume-slider" min="0" max="100" value="80">
                   <span id="volume-value">80%</span>
@@ -429,37 +427,36 @@
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Remember Last Volume</span>
-                  <span class="setting-hint">When enabled, volume persists between sessions</span>
+                  <span class="setting-label">记住上次音量</span>
+                  <span class="setting-hint">启用后，音量会在不同会话间保持</span>
                 </div>
               </div>
             </div>
 
             <div class="settings-section">
-              <h3>Playback</h3>
+              <h3>播放设置</h3>
               <div class="setting-item">
                 <label class="setting-toggle">
                   <input type="checkbox" id="setting-autoplay-next">
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Auto-play Next Episode</span>
-                  <span class="setting-hint">Automatically play the next episode when one ends</span>
+                  <span class="setting-label">自动播放下一集</span>
+                  <span class="setting-hint">一集播放结束后自动播放下一集</span>
                 </div>
               </div>
             </div>
 
             <div class="settings-section">
-              <h3>Streaming</h3>
+              <h3>流媒体设置</h3>
               <div class="setting-item">
                 <label class="setting-toggle">
                   <input type="checkbox" id="setting-force-proxy">
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Force Backend Proxy</span>
-                  <span class="setting-hint">Route all streams through the proxy server. Enable if streams don't play
-                    directly.</span>
+                  <span class="setting-label">强制使用后端代理</span>
+                  <span class="setting-hint">所有流均通过代理服务器传输。如果流无法直接播放，请启用此选项。</span>
                 </div>
               </div>
               <div class="setting-item">
@@ -468,9 +465,8 @@
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Force Audio Transcode</span>
-                  <span class="setting-hint">Transcode audio to AAC for browser compatibility. Enable if you get video
-                    but no audio (fixes Dolby/AC3/EAC3).</span>
+                  <span class="setting-label">强制音频转码</span>
+                  <span class="setting-hint">将音频转码为AAC格式以兼容浏览器。如果有画面无声音时启用（修复杜比/AC3/EAC3音频问题）。</span>
                 </div>
               </div>
               <div class="setting-item">
@@ -479,114 +475,112 @@
                   <span class="toggle-slider"></span>
                 </label>
                 <div class="setting-info">
-                  <span class="setting-label">Force Remux</span>
-                  <span class="setting-hint">Remux streams to MP4 container. Enable for raw .ts streams
-                    from IPTV middleware like m3u-editor or dispatcharr.</span>
+                  <span class="setting-label">强制重封装</span>
+                  <span class="setting-hint">将流重封装为MP4容器。对于来自IPTV中间件（如m3u-editor或dispatcharr）的原始.ts流，请启用此选项。</span>
                 </div>
               </div>
               <div class="setting-item">
                 <div class="setting-info" style="flex: 1;">
-                  <span class="setting-label">Stream Output Format</span>
-                  <span class="setting-hint">Container format for Xtream streams. Try TS if you experience buffering
-                    issues.</span>
+                  <span class="setting-label">流输出格式</span>
+                  <span class="setting-hint">Xtream流的容器格式。如果遇到缓冲问题，尝试切换为TS格式。</span>
                 </div>
                 <select id="setting-stream-format" class="source-select" style="width: auto; min-width: 200px;">
-                  <option value="m3u8">HLS (m3u8) - Recommended</option>
-                  <option value="ts">MPEG-TS (ts) - Better buffer</option>
+                  <option value="m3u8">HLS (m3u8) - 推荐</option>
+                  <option value="ts">MPEG-TS (ts) - 缓冲更优</option>
                 </select>
               </div>
             </div>
 
             <div class="settings-section">
-              <h3>Keyboard Shortcuts</h3>
+              <h3>键盘快捷键</h3>
               <div class="shortcuts-grid">
-                <div class="shortcut"><kbd>↑</kbd> / <kbd>↓</kbd> Channel up/down (or volume)</div>
-                <div class="shortcut"><kbd>←</kbd> / <kbd>→</kbd> Volume down/up (when arrows = channels)</div>
-                <div class="shortcut"><kbd>Space</kbd> / <kbd>K</kbd> Play/Pause</div>
-                <div class="shortcut"><kbd>F</kbd> Fullscreen</div>
-                <div class="shortcut"><kbd>M</kbd> Mute/Unmute</div>
-                <div class="shortcut"><kbd>I</kbd> Toggle info overlay</div>
-                <div class="shortcut"><kbd>PgUp</kbd> / <kbd>PgDn</kbd> Channel up/down</div>
+                <div class="shortcut"><kbd>↑</kbd> / <kbd>↓</kbd> 切换频道（或调节音量）</div>
+                <div class="shortcut"><kbd>←</kbd> / <kbd>→</kbd> 减小/增大音量（当方向键设为切换频道时）</div>
+                <div class="shortcut"><kbd>空格</kbd> / <kbd>K</kbd> 播放/暂停</div>
+                <div class="shortcut"><kbd>F</kbd> 全屏</div>
+                <div class="shortcut"><kbd>M</kbd> 静音/取消静音</div>
+                <div class="shortcut"><kbd>I</kbd> 切换信息浮层</div>
+                <div class="shortcut"><kbd>PgUp</kbd> / <kbd>PgDn</kbd> 切换频道</div>
               </div>
             </div>
           </div>
 
-          <!-- Manage Content Tab -->
+          <!-- 内容管理标签页 -->
           <div id="tab-content" class="tab-content">
             <div class="content-browser">
               <div class="content-browser-header">
                 <div class="content-type-toggle">
-                  <button class="btn btn-sm active" id="content-type-channels">Channels</button>
-                  <button class="btn btn-sm" id="content-type-movies">Movies</button>
-                  <button class="btn btn-sm" id="content-type-series">Series</button>
+                  <button class="btn btn-sm active" id="content-type-channels">频道</button>
+                  <button class="btn btn-sm" id="content-type-movies">电影</button>
+                  <button class="btn btn-sm" id="content-type-series">剧集</button>
                 </div>
                 <select id="content-source-select" class="source-select">
-                  <option value="">Select a source...</option>
+                  <option value="">选择来源...</option>
                 </select>
                 <div class="search-wrapper">
-                  <input type="text" id="content-search" placeholder="Search groups/channels..." class="search-input">
-                  <button type="button" class="search-clear" title="Clear search">&times;</button>
+                  <input type="text" id="content-search" placeholder="搜索分组/频道..." class="search-input">
+                  <button type="button" class="search-clear" title="清空搜索">&times;</button>
                 </div>
                 <div class="content-actions">
-                  <button class="btn btn-sm btn-secondary" id="content-show-all">Show All</button>
-                  <button class="btn btn-sm btn-secondary" id="content-hide-all">Hide All</button>
+                  <button class="btn btn-sm btn-secondary" id="content-show-all">显示全部</button>
+                  <button class="btn btn-sm btn-secondary" id="content-hide-all">隐藏全部</button>
                   <button class="btn btn-sm btn-primary" id="content-save"><svg xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24" fill="currentColor" class="icon">
                       <path
                         d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z" />
-                    </svg> Save Changes</button>
+                    </svg> 保存更改</button>
                 </div>
               </div>
-              <p class="hint" style="margin-bottom: var(--space-sm);">✓ Checked = Visible, ☐ Unchecked = Hidden</p>
+              <p class="hint" style="margin-bottom: var(--space-sm);">✓ 勾选 = 显示，☐ 未勾选 = 隐藏</p>
               <div id="content-tree" class="content-tree">
-                <p class="hint">Select a source to view groups and channels</p>
+                <p class="hint">选择来源以查看分组和频道</p>
               </div>
             </div>
           </div>
 
-          <!-- Users Tab (Admin Only) -->
+          <!-- 用户标签页（仅管理员） -->
           <div id="tab-users" class="tab-content">
             <div class="settings-section">
-              <h3>User Management</h3>
-              <p class="hint">Manage user accounts and permissions</p>
+              <h3>用户管理</h3>
+              <p class="hint">管理用户账户和权限</p>
 
               <div class="user-list-container">
                 <table class="user-table">
                   <thead>
                     <tr>
-                      <th>Username</th>
-                      <th>Role</th>
-                      <th>Created</th>
-                      <th>Actions</th>
+                      <th>用户名</th>
+                      <th>角色</th>
+                      <th>创建时间</th>
+                      <th>操作</th>
                     </tr>
                   </thead>
                   <tbody id="user-list">
                     <tr>
-                      <td colspan="4" class="hint">Loading users...</td>
+                      <td colspan="4" class="hint">加载用户中...</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
               <div class="add-user-section">
-                <h4>Add New User</h4>
+                <h4>添加新用户</h4>
                 <form id="add-user-form" class="user-form">
                   <div class="form-group">
-                    <label for="new-username">Username</label>
+                    <label for="new-username">用户名</label>
                     <input type="text" id="new-username" name="username" class="form-input" required>
                   </div>
                   <div class="form-group">
-                    <label for="new-password">Password</label>
+                    <label for="new-password">密码</label>
                     <input type="password" id="new-password" name="password" class="form-input" required minlength="6">
                   </div>
                   <div class="form-group">
-                    <label for="new-role">Role</label>
+                    <label for="new-role">角色</label>
                     <select id="new-role" name="role" class="form-input" required>
-                      <option value="viewer">Viewer</option>
-                      <option value="admin">Admin</option>
+                      <option value="viewer">普通用户</option>
+                      <option value="admin">管理员</option>
                     </select>
                   </div>
-                  <button type="submit" class="btn btn-primary">Add User</button>
+                  <button type="submit" class="btn btn-primary">添加用户</button>
                 </form>
               </div>
             </div>
@@ -594,17 +588,17 @@
         </div>
       </div>
 
-      <!-- Watch Page (VOD Player) - Not in navigation -->
+      <!-- 观看页面（点播播放器）- 不在导航中显示 -->
       <div id="page-watch" class="page watch-page">
-        <!-- Video Section (100vh) -->
+        <!-- 视频区域（占满屏幕高度） -->
         <section class="watch-video-section">
           <video id="watch-video" playsinline></video>
 
-          <!-- Player Controls Overlay -->
+          <!-- 播放器控制层 -->
           <div class="watch-overlay" id="watch-overlay">
-            <!-- Top Bar: Back + Title -->
+            <!-- 顶部栏：返回 + 标题 -->
             <div class="watch-top-bar">
-              <button class="watch-back-btn" id="watch-back-btn" title="Back">
+              <button class="watch-back-btn" id="watch-back-btn" title="返回">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                   <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
                 </svg>
@@ -615,32 +609,32 @@
               </div>
             </div>
 
-            <!-- Center: Large Play Button -->
+            <!-- 中间：大型播放按钮 -->
             <button class="watch-center-play" id="watch-center-play">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </button>
 
-            <!-- Loading Spinner -->
+            <!-- 加载动画 -->
             <div class="watch-loading" id="watch-loading">
               <div class="loading-spinner"></div>
             </div>
 
-            <!-- Bottom Bar: Controls -->
+            <!-- 底部栏：控制按钮 -->
             <div class="watch-bottom-bar">
               <div class="watch-progress-container">
                 <span id="watch-time-current" class="watch-time">0:00</span>
                 <input type="range" class="watch-progress" id="watch-progress" min="0" max="100" value="0" step="0.1">
               </div>
               <div class="watch-controls">
-                <button class="watch-btn" id="watch-skip-back" title="Back 10 seconds">
+                <button class="watch-btn" id="watch-skip-back" title="后退10秒">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                     <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
                   </svg>
                   <span class="skip-label">10</span>
                 </button>
-                <button class="watch-btn watch-btn-lg" id="watch-play-pause" title="Play/Pause">
+                <button class="watch-btn watch-btn-lg" id="watch-play-pause" title="播放/暂停">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="icon icon-play">
                     <path d="M8 5v14l11-7z" />
@@ -650,14 +644,14 @@
                     <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
                   </svg>
                 </button>
-                <button class="watch-btn" id="watch-skip-fwd" title="Forward 10 seconds">
+                <button class="watch-btn" id="watch-skip-fwd" title="快进10秒">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                     <path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z" />
                   </svg>
                   <span class="skip-label">10</span>
                 </button>
                 <div class="watch-spacer"></div>
-                <button class="watch-btn" id="watch-mute" title="Mute">
+                <button class="watch-btn" id="watch-mute" title="静音">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon icon-vol">
                     <path
                       d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
@@ -669,28 +663,28 @@
                   </svg>
                 </button>
                 <input type="range" class="watch-volume" id="watch-volume" min="0" max="100" value="80">
-                <!-- Captions Button -->
+                <!-- 字幕按钮 -->
                 <div class="watch-captions-wrapper">
-                  <button class="watch-btn" id="watch-captions-btn" title="Captions">
+                  <button class="watch-btn" id="watch-captions-btn" title="字幕">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                       <path
                         d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 7H9.5v-.5h-2v3h2V13H11v1c0 .55-.45 1-1 1H7c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1zm7 0h-1.5v-.5h-2v3h2V13H18v1c0 .55-.45 1-1 1h-3c-.55 0-1-.45-1-1v-4c0-.55.45-1 1-1h3c.55 0 1 .45 1 1v1z" />
                     </svg>
                   </button>
                   <div class="watch-captions-menu hidden" id="watch-captions-menu">
-                    <div class="captions-menu-title">Subtitles</div>
+                    <div class="captions-menu-title">字幕</div>
                     <div class="captions-menu-list" id="watch-captions-list">
-                      <button class="captions-option active" data-index="-1">Off</button>
+                      <button class="captions-option active" data-index="-1">关闭</button>
                     </div>
                   </div>
                 </div>
-                <button class="watch-btn" id="watch-pip" title="Picture-in-Picture">
+                <button class="watch-btn" id="watch-pip" title="画中画">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                     <path
                       d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z" />
                   </svg>
                 </button>
-                <button class="watch-btn" id="watch-fullscreen" title="Fullscreen">
+                <button class="watch-btn" id="watch-fullscreen" title="全屏">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                     <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
                   </svg>
@@ -698,124 +692,13 @@
               </div>
             </div>
 
-            <!-- Scroll Indicator -->
+            <!-- 滚动提示 -->
             <div class="watch-scroll-hint" id="watch-scroll-hint">
-              <span>Scroll for details</span>
+              <span>滚动查看详情</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
                 <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
               </svg>
             </div>
           </div>
 
-          <!-- Next Episode Panel -->
-          <div class="watch-next-episode hidden" id="watch-next-episode">
-            <div class="next-info">
-              <p class="next-label">Up Next</p>
-              <h4 id="next-episode-title"></h4>
-            </div>
-            <span class="next-countdown" id="next-countdown">10</span>
-            <button class="btn btn-primary btn-sm" id="next-play-now">Play Now</button>
-            <button class="btn btn-ghost btn-sm" id="next-cancel">Cancel</button>
-          </div>
-        </section>
-
-        <!-- Content Details Section (scrollable) -->
-        <section class="watch-details-section" id="watch-details">
-          <!-- Content Info -->
-          <div class="watch-content-info">
-            <img class="watch-poster" id="watch-poster" src="" alt="">
-            <div class="watch-meta">
-              <h2 id="watch-content-title"></h2>
-              <div class="watch-meta-row">
-                <span class="watch-year" id="watch-year"></span>
-                <span class="watch-rating" id="watch-rating"></span>
-                <span class="watch-duration" id="watch-duration"></span>
-              </div>
-              <p class="watch-description" id="watch-description"></p>
-              <div class="watch-actions">
-                <button class="btn btn-primary" id="watch-play-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span id="watch-play-btn-text">Play</span>
-                </button>
-                <button class="btn btn-ghost" id="watch-favorite-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="icon icon-fav-outline">
-                    <path
-                      d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="icon icon-fav-filled hidden">
-                    <path
-                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                  </svg>
-                  <span>Favorite</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Movies: Recommended Section -->
-          <div class="watch-recommended hidden" id="watch-recommended">
-            <h3>More Like This</h3>
-            <div class="watch-recommended-grid" id="watch-recommended-grid">
-              <!-- Movie cards inserted dynamically -->
-            </div>
-          </div>
-
-          <!-- Series: Seasons & Episodes -->
-          <div class="watch-episodes hidden" id="watch-episodes">
-            <h3>Episodes</h3>
-            <div class="watch-seasons" id="watch-seasons">
-              <!-- Season accordions inserted dynamically -->
-            </div>
-          </div>
-        </section>
-      </div>
-
-    </main>
-  </div>
-
-  <!-- Modal Template -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modal-title">Modal</h3>
-        <button class="modal-close">&times;</button>
-      </div>
-      <div id="modal-body" class="modal-body"></div>
-      <div id="modal-footer" class="modal-footer"></div>
-    </div>
-  </div>
-
-  <!-- Context Menu Template -->
-  <div id="context-menu" class="context-menu">
-    <button class="context-item" data-action="play"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-        fill="currentColor" class="icon">
-        <path d="M8 5v14l11-7z" />
-      </svg> Play</button>
-    <button class="context-item" data-action="hide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-        fill="currentColor" class="icon">
-        <path
-          d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-4.01.7l2.16 2.16C10.85 7.18 11.4 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z" />
-      </svg> Hide</button>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="/js/icons.js"></script>
-  <script src="/js/api.js?v=2"></script>
-  <script src="/js/components/VideoPlayer.js?v=2"></script>
-  <script src="/js/components/ChannelList.js?v=3"></script>
-  <script src="/js/components/SourceManager.js?v=2"></script>
-  <script src="/js/components/EpgGuide.js?v=2"></script>
-  <script src="/js/pages/Home.js?v=3"></script>
-  <script src="/js/pages/Guide.js?v=2"></script>
-  <script src="/js/pages/MoviesPage.js?v=4"></script>
-  <script src="/js/pages/SeriesPage.js?v=1"></script>
-  <script src="/js/pages/Settings.js?v=2"></script>
-  <script src="/js/pages/WatchPage.js?v=1"></script>
-  <script src="/js/app.js?v=4"></script>
-</body>
-
-</html>
+          <!-- 下一集面板 -->
